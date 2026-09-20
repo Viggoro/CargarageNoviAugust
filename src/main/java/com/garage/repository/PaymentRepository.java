@@ -1,0 +1,16 @@
+package com.garage.repository;
+
+import com.garage.model.Payment;
+import com.garage.model.enums.PaymentStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface PaymentRepository extends JpaRepository<Payment, Long> {
+    List<Payment> findByStatus(PaymentStatus status);
+    Page<Payment> findByStatus(PaymentStatus status, Pageable pageable);
+}
